@@ -35,7 +35,7 @@ if (isset($_POST['btn_add'])) {
         if (!is_password($_POST['password'])) {
             $error['password'] = "Mật khẩu không đúng định dạng";
         } else { // khớp định dạng
-            $password = $_POST['password']; // xuất ra password
+            $password = ($_POST['password']); // xuất ra password
         }
     }
 

@@ -106,4 +106,11 @@ $selling_products = get_selling_products();
             </div>
         </div>
     </div>
+<!--    <div class="section" id="banner-wp">
+        <div class="section-detail">
+            <a href="?page=detail_blog_product" title="" class="thumb">
+                <img src="public/images/banner.png" alt="">
+            </a>
+        </div>
+    </div>-->
 </div>

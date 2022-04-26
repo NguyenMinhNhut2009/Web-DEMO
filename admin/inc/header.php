@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Quản lý WEB TEAM/title>
+        <title>Quản lý WEBTEAM</title>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <link href="public/css/bootstrap/bootstrap.min.css" rel="stylesheet" type="text/css"/>
@@ -104,7 +104,7 @@
                             <div id="dropdown-user" class="dropdown dropdown-extended fl-right">
                                 <button class="dropdown-toggle clearfix" type="button"  data-toggle="dropdown" aria-haspopup="true" aria-expanded="true">
                                     <div id="thumb-circle" class="fl-left">
-                                        <img src="uploads/<?php if (is_login_admin()) echo info_user('avatar'); ?>">
+                                    //////////////<img src="uploads/<?php if (is_login_admin()) echo info_user('avatar'); ?>">
                                     </div>
                                     <h3 id="account" class="fl-right"><?php if (is_login_admin()) echo info_user('fullname'); ?></h3>
                                 </button>

@@ -67,22 +67,22 @@
                     <a href="#" title="">Laptop</a>
                     <ul class="sub-menu">
                         <li>
-                            <a href="?mod=product&act=category_product&id=1" title="">VĂN HỌC</a>
+                            <a href="?mod=product&act=category_product&id=1" title="">DELL</a>
                         </li>
                         <li>
-                            <a href="?mod=product&act=category_product&id=2" title="">THIẾU NHI</a>
+                            <a href="?mod=product&act=category_product&id=2" title="">ASUS</a>
                         </li>
                         <li>
-                            <a href="?mod=product&act=category_product&id=3" title="">TÂM LÝ KỸ NĂNG</a>
+                            <a href="?mod=product&act=category_product&id=3" title="">HP</a>
                         </li>
                         <li>
-                            <a href="?mod=product&act=category_product&id=4" title="">KINH TẾ</a>
+                            <a href="?mod=product&act=category_product&id=4" title="">MACBOOK</a>
                         </li>
                         <li>
-                            <a href="?mod=product&act=category_product&id=5" title="">SÁCH GIÁO KHOA</a>
+                            <a href="?mod=product&act=category_product&id=5" title="">LENOVO</a>
                         </li>
                         <li>
-                            <a href="?mod=product&act=category_product&id=6" title="">VĂN PHÒNG PHẨM</a>
+                            <a href="?mod=product&act=category_product&id=6" title="">MSI</a>
                         </li>
                         <li>
                             <a href="?mod=product&act=category_product&id=7" title="">ACER</a>

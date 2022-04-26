@@ -309,12 +309,12 @@ if (isset($_POST['btn_update'])) {
                         <label>Danh mục bài viết</label>
                         <select name="cat_id">
                             <option value="0">-- Chọn danh mục --</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '1') echo "selected='selected'"; ?> value="1">VĂN HỌC</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '2') echo "selected='selected'"; ?> value="2">THIẾU NHI</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '3') echo "selected='selected'"; ?> value="3">TĂM LÝ KĨ NĂNG</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '4') echo "selected='selected'"; ?> value="4">KINH TẾ</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '5') echo "selected='selected'"; ?> value="5">SÁCH GIÁO KHOA</option>
-                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '6') echo "selected='selected'"; ?> value="6">VĂN PHÒNG PHẨM</option>
+                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '1') echo "selected='selected'"; ?> value="1">DELL</option>
+                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '2') echo "selected='selected'"; ?> value="2">ASUS</option>
+                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '3') echo "selected='selected'"; ?> value="3">HP</option>
+                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '4') echo "selected='selected'"; ?> value="4">MACBOOK</option>
+                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '5') echo "selected='selected'"; ?> value="5">LENOVO</option>
+                            <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '6') echo "selected='selected'"; ?> value="6">MSI</option>
                             <option <?php if (isset($item['cat_id']) && $item['cat_id'] == '7') echo "selected='selected'"; ?> value="7">ACER</option>
                         </select>
                         <?php

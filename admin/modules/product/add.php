@@ -273,13 +273,13 @@ if (isset($_POST['btn_add'])) {
                         <label>Danh mục sản phẩm</label>
                         <select name="cat_id">
                             <option value="">-- Chọn danh mục --</option>
-                            <option value="1">VĂN HỌC</option>
-                            <option value="2">THIẾU NHI</option>
-                            <option value="3">TĂM LÝ KĨ NĂNG</option>
-                            <option value="4">KINH TẾ</option>
-                            <option value="5">SÁCH GIÁO KHOA</option>
-                            <option value="6">VĂN PHÒNG PHẨM</option>
-                            <option value="7"></option>
+                            <option value="1">DELL</option>
+                            <option value="2">ASUS</option>
+                            <option value="3">HP</option>
+                            <option value="4">MACBOOK</option>
+                            <option value="5">LENOVO</option>
+                            <option value="6">MSI</option>
+                            <option value="7">ACER</option>
                         </select>
                         <?php echo form_error('cat_id'); ?>
 

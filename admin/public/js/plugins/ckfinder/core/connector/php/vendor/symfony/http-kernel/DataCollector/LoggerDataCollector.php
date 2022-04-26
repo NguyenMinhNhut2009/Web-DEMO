@@ -104,7 +104,7 @@ class LoggerDataCollector extends DataCollector implements LateDataCollectorInte
             $context = $this->sanitizeContext($log['context']);
 
             if (isset($context['type'], $context['file'], $context['line'], $context['level'])) {
-                $errorId = "{$context['type']}/{$context['line']}/{$context['file']}\x00{$log['message']}";
+                $errorId = md5("{$context['type']}/{$context['line']}/{$context['file']}\x00{$log['message']}", true);
                 $silenced = !($context['type'] & $context['level']);
 
                 if (isset($errorContextById[$errorId])) {

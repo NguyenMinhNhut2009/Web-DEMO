@@ -39,7 +39,7 @@ if (isset($_POST['btn_change_pass'])) {
 //        if (!is_password($_POST['password'])) {
 //            $error['confirm_pass'] = "Xác nhận mật khẩu chưa đúng định dạng";
 //        } else {
-//            $confirm_pass =$_POST['confirm_pass'];
+//            $confirm_pass = md5($_POST['confirm_pass']);
 //        }
 //    }
 

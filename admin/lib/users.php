@@ -4,7 +4,7 @@ function check_login($username, $password) {
 //chỉnh sửa biến toàn cục bên trong 1 hàm thì sử dụng GLOBAL 
 //    global $list_users;
 //    foreach ($list_users as $user) {
-//        if ($username == $user['username'] && $password == $user['password']) {
+//        if ($username == $user['username'] && md5($password) == $user['password']) {
 //            return true;
 //        }
 //    }

@@ -2,9 +2,8 @@
 get_header();
 ?>
 <?php
-    $cat_id = (int) $_GET['id'];
-    $list_product = get_list_cat_product_by_cat_id($cat_id);
-    
+$list_product = get_highlow();
+// show_array($list_product);
 ?>
 
 <?php
@@ -12,35 +11,39 @@ $id = (int) $_GET['id'];
 $sql = "SELECT * FROM category WHERE cat_id = '{$id}' and status = 1";
 $result = mysqli_query($conn, $sql);
 $list_cat = array();
-$number_rows = mysqli_num_rows($result);
-if ($number_rows > 0) {
+$num_rows = mysqli_num_rows($result);
+if ($num_rows > 0) {
     $row = $result->fetch_assoc();
     $list_cat[] = $row;
 }
 //show_array($list_product);
 ?>
 
+
 <?php
 // phân trang
 if (isset($_GET['id'])) {
     $id = $_GET['id'];
-    $number_rows = db_num_rows("SELECT * FROM product,category WHERE product.cat_id = category.cat_id and product.cat_id= $id and category.status=1 and product.status = 1 ORDER BY price_new DESC");
+    $number_rows = db_num_rows("SELECT * FROM product where cat_id= $id and status = 1 ORDER BY price_new DESC");
 //    echo $number_rows;
-    $num_per_page = 12;
-    $total_row = $number_rows;
-    $num_page = ceil($total_row / $num_per_page);
-    $page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
-//    echo $page;
-    $start = ($page - 1) * $num_per_page;
-//    echo $start;
-    $list_product = get_product_categoryes($start, $num_per_page, $id);
+} else {
+    $number_rows = count($list_product);
 }
-
-
-
-$default_sorting = get_default_sorting($id);
-//show_array($default_sorting);
+$num_per_page = 12;
+$total_row = $number_rows;
+$num_page = ceil($total_row / $num_per_page);
+$page = isset($_GET['page']) ? (int) $_GET['page'] : 1;
+$start = ($page - 1) * $num_per_page;
+if (isset($_GET['id'])) {
+    $id = $_GET['id'];
+    $list_product = get_product_highlow_cate($start, $num_per_page, $id);
+} else {
+    $list_product = get_product_highlow($start, $num_per_page);
+}
+$default_sorting = get_default_sorting();
+// show_array($default_sorting);
 ?>
+
 
 <div id="main-content-wp" class="clearfix category-product-page">
     <div class="wp-inner">
@@ -72,15 +75,9 @@ $default_sorting = get_default_sorting($id);
         <div class="main-content fl-right">
             <div class="section" id="list-product-wp">
                 <div class="section-head clearfix">
-                    <?php
-                    foreach ($list_cat as $cat) {
-                        ?>
-                        <h3 class="section-title fl-left"><?php echo $cat['cat_name']; ?></h3>
-                        <?php
-                    }
-                    ?>
+                    <h3 class="section-title fl-left"><?php echo $cat['cat_name']; ?></h3>
                     <div class="filter-wp fl-right">
-                        <p class="desc">Hiển thị <?php echo count($list_product); ?> sản phẩm (<?php echo $number_rows; ?> sản phẩm)</p>
+                        <p class="desc">Hiển thị <?php echo count($list_product); ?> sản phẩm</p>
                         <div class="form-filter">
                             <form method="POST" action="">
                                 <select name="sorting" id="select" class="selection-2 city">
@@ -88,8 +85,8 @@ $default_sorting = get_default_sorting($id);
                                                                         <option value="1">Từ A-Z</option>
                                                                         <option value="2">Từ Z-A</option>
                                                                         <option value="3">Giá cao xuống thấp</option>
-                                                                        <option value="4">Giá thấp lên cao</option>-->
-                                    <script type="text/javascript">
+                                                                        <option value="3">Giá thấp lên cao</option>-->
+                                    <script  type="text/javascript">
                                         $(document).ready(function () {
                                             $(".city").change(function () {
                                                 var id = $(".city").val();
@@ -107,11 +104,12 @@ $default_sorting = get_default_sorting($id);
                                     <?php
                                     foreach ($default_sorting as $list) {
                                         ?>
-                                    <option value="<?php echo $list['id'] ?>"><?php echo $list['sort_name'] ?></option>
+                                        <option value="<?php echo $list['id'] ?>"><?php echo $list['sort_name'] ?></option>
                                         <?php
                                     }
                                     ?>
                                 </select>
+<!--                                <button type="submit">Lọc</button>-->
                             </form>
                         </div>
                     </div>
@@ -130,7 +128,7 @@ $default_sorting = get_default_sorting($id);
                                     $date = getdate(); // lấy ngày
                                     $currentDate = $date["year"] . "-" . $date["mon"] . "-" . $date["mday"]; // lấy ngày tháng năm hiện tai
                                     $week = strtotime(date("Y-m-d", strtotime($item['created_at'])) . " +1 week"); // chuyển định dạng giây về dạng số + 7 ngày
-                                    $datediff = $week - (strtotime($currentDate)); // ngày trong khoảng là sp mới = 1 tuần - ngày hiện tại
+                                    $datediff = $week - (strtotime($currentDate));// ngày trong khoảng là sp mới = 1 tuần - ngày hiện tại
                                     $labelnew = "";
                                     if (floor($datediff / (60 * 60 * 24)) > 0 && floor($datediff / (60 * 60 * 24)) <= 7) {
                                         $labelnew = "block2-labelnew";
@@ -167,27 +165,17 @@ $default_sorting = get_default_sorting($id);
                             ?>
                         </ul>
                         <?php
-                    } else {
-                        ?>
-                        <p>Không có sản phẩm</p>
-                        <?php
                     }
                     ?>
                 </div>
             </div>
             <div class="section" id="paging-wp">
-                <?php
-                if (!empty($list_product)) {
-                    ?>
-                    <div class="section-detail clearfix">
-                        <?php
-                        $id = $item['cat_id'];
-                        echo get_pagging_category_product($num_page, $page, "?mod=product&act=category_product", $id);
-                        ?>
-                    </div>
+                <div class="section-detail clearfix">
                     <?php
-                }
-                ?>
+                    $id = $item['cat_id'];
+                    echo get_pagging_category_product($num_page, $page, "?mod=sort&act=high_low", $id);
+                    ?>
+                </div>
             </div>
         </div>
     </div>
