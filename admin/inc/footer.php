@@ -1,6 +1,6 @@
 <div id="footer-wp">
     <div class="wp-inner">
-        <p id="copyright">2020 © SPACE TEAM</p>
+        <p id="copyright" style="color: white;">Commerce © 2022 All rights reserved </p>
     </div>
 </div>
 </div>
