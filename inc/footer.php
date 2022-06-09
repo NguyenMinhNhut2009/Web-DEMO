@@ -50,7 +50,7 @@
     <div id="foot-bot">
         <div class="wp-inner">
             <p id="copyright" style="color: white;">Commerce © 2022 All rights reserved </p>
-            <p>Supported Email: enquiry@husol.org</p>
+            <p>Supported Email: nhutxngm@gmail.com</p>
         </div>
     </div>
 </div>
